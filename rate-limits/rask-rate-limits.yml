@@ -1,0 +1,60 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Rask AI
+providerId: rask
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- AI
+- Video Localization
+- Dubbing
+- Translation
+- Transcription
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  Rask AI does not publish explicit numeric request-per-second or
+  request-per-minute API rate limits in its public documentation. In practice,
+  usage is constrained by the localization minutes included in the subscribed
+  plan, and API capabilities correspond to the features in that plan. Project
+  processing is asynchronous, which naturally throttles long-running dubbing,
+  translation, and transcription jobs. Specific per-endpoint throttling values
+  are not documented and are not reconciled in this artifact.
+notes: >-
+  No numeric API rate limits were found in Rask's public API docs as of the
+  capture date. Confirm any per-account or per-endpoint limits with Rask API
+  support (api@rask.ai) on reconciliation. The primary usage constraint is the
+  plan's monthly minute allotment.
+sources:
+- https://docs.api.rask.ai
+- https://help.rask.ai/hc/introducing-rask-api-rask-help-center
+- https://www.rask.ai/pricing
+responseCodes:
+  throttled: 429
+limits:
+- name: Included Minutes Quota
+  scope: account
+  metric: minutes
+  limit: see plan
+  notes: Primary usage constraint; monthly localization minutes vary by subscription plan.
+- name: API Request Rate
+  scope: account
+  metric: requests
+  limit: see provider documentation
+  notes: No explicit numeric per-second or per-minute API rate limit is published.
+- name: Concurrent Async Jobs
+  scope: account
+  metric: jobs
+  limit: see provider documentation
+  notes: Projects (dubbing/translation/transcription) are processed asynchronously; concurrency is not publicly documented.
+policies:
+- name: Plan-Gated Access
+  description: API access is available with paid plans; capabilities correspond to the selected plan's features.
+- name: Backoff Strategy
+  description: Clients should poll project status with a reasonable interval and implement exponential backoff with jitter, honoring any Retry-After header on 429 responses.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

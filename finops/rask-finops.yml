@@ -1,0 +1,91 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Rask AI
+providerId: rask
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- AI
+- Video Localization
+- Dubbing
+- Translation
+- Transcription
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Rask AI spend. Rask bills on a subscription, per-minute model:
+  each plan includes a monthly allotment of localization minutes (1 minute = 1
+  minute of final translated output), with enhanced lip-sync consuming minutes
+  at a higher multiplier (e.g., 3x). On the Business plan and above, additional
+  minutes beyond the allotment are billed per minute (about $3 per extra
+  minute). Cost is driven by the number and duration of dubbing, translation,
+  and transcription jobs run against the plan's minute budget.
+notes: >-
+  Per-minute and plan rates are subject to change and may include promotional
+  discounts; verify against the Rask AI pricing page during reconciliation.
+sources:
+- https://www.rask.ai/pricing
+- https://docs.api.rask.ai
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Rask AI
+serviceCategory: AI and Machine Learning
+billingModel:
+  pricingCategory: Subscription-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: Rask AI
+  ServiceCategory: AI and Machine Learning
+  ProviderName: Rask AI
+  PublisherName: Rask AI
+  InvoiceIssuerName: Rask AI
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Subscription-Based
+meters:
+- name: included_minutes
+  description: Localization minutes included in the subscribed plan, consumed by dubbing, translation, and transcription jobs.
+  unit: minutes
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+- name: extra_minutes
+  description: Additional minutes beyond the plan allotment, billed per minute (Business plan and above, about $3/min).
+  unit: minutes
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+- name: lipsync_minutes
+  description: Minutes consumed by lip-sync; enhanced lip-sync bills at a higher multiplier (e.g., 3x standard).
+  unit: minutes
+  aggregation: sum
+  dimensions:
+  - account
+  - project
+principles:
+- name: Visibility
+  description: Track localization minutes consumed per project and per language against the plan's monthly allotment via the account credits/usage view.
+- name: Allocation
+  description: Tag projects per workload/team/language and map minute consumption to internal cost centers.
+- name: Optimization
+  description: Reuse and edit transcriptions before generating, batch shorter clips, and reserve enhanced lip-sync (higher minute multiplier) for content that needs it; right-size the plan to expected monthly minutes to avoid per-minute overage.
+- name: Accountability
+  description: Assign owners per project; review minute burn monthly against the plan budget before incurring per-minute overage.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

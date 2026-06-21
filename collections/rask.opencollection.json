@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rask AI API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Media",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload a media file.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.rask.ai/api/library/v1/media",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Upload a video or audio file (mp4, mov, webm, mkv, mp3, wav) to the media library. Returns a media identifier used when creating a transcription or project."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Transcription",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a transcription.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.rask.ai/v2/transcriptions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Transcribe uploaded media into editable text segments, or provide an SRT file for higher dubbing accuracy. Returns a transcription identifier used when creating a project."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a project (dubbing job).",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.rask.ai/v2/projects",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a localization project from an uploaded video, specifying the destination language and optional source language, speaker count, transcription, and glossary. Processing is asynchronous."
+        },
+        {
+          "info": {
+            "name": "Get a project (status and artifacts).",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.rask.ai/v2/projects/:project_id",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project to retrieve."
+              }
+            ]
+          },
+          "docs": "Retrieve a single project to monitor its asynchronous processing status and obtain output artifact links (translated video, translated audio, voiceover) once localization completes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

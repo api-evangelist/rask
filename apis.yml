@@ -1,0 +1,151 @@
+aid: rask
+url: https://raw.githubusercontent.com/api-evangelist/rask/refs/heads/main/apis.yml
+name: Rask AI
+kind: company
+description: Rask AI is an AI video and audio localization platform offering automated
+  dubbing, translation, transcription, voice cloning, and lip-sync across 130+ languages.
+  Its REST API lets developers upload media, transcribe and translate it, create
+  localization projects, and retrieve dubbed video, audio, and voiceover artifacts
+  programmatically using an OAuth2 Bearer token.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- AI
+- Video Localization
+- Dubbing
+- Translation
+- Transcription
+created: '2026-06-21'
+modified: '2026-06-21'
+specificationVersion: '0.19'
+apis:
+- aid: rask:projects-dubbing-jobs
+  name: Rask AI Projects & Dubbing Jobs API
+  tags:
+  - Projects
+  - Dubbing
+  - Localization
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.api.rask.ai/workflow/translation
+  baseURL: https://api.rask.ai/v2
+  properties:
+  - url: https://docs.api.rask.ai
+    type: Documentation
+  - url: https://docs.api.rask.ai/api-reference/project/create_project
+    type: APIReference
+  - url: openapi/rask-openapi.yml
+    type: OpenAPI
+  - url: collections/rask.postman_collection.json
+    type: PostmanCollection
+  - url: collections/rask.opencollection.json
+    type: OpenCollection
+  description: Create and manage localization projects (dubbing jobs) from an uploaded
+    video, specifying source and destination languages, speaker count, transcription,
+    and glossary. Projects are processed asynchronously and return translated video,
+    translated audio, and voiceover artifacts.
+- aid: rask:translation
+  name: Rask AI Translation API
+  tags:
+  - Translation
+  - Languages
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.api.rask.ai/workflow/translation
+  baseURL: https://api.rask.ai/v2
+  properties:
+  - url: https://docs.api.rask.ai/workflow/translation
+    type: Documentation
+  - url: https://docs.api.rask.ai/languages/destination
+    type: APIReference
+  - url: openapi/rask-openapi.yml
+    type: OpenAPI
+  - url: collections/rask.postman_collection.json
+    type: PostmanCollection
+  - url: collections/rask.opencollection.json
+    type: OpenCollection
+  description: Translate transcribed media into 130+ destination languages as part
+    of the project generation workflow, with optional glossary support for consistent
+    terminology and multi-speaker handling.
+- aid: rask:voices
+  name: Rask AI Voices API
+  tags:
+  - Voices
+  - Voice Cloning
+  - Speakers
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.api.rask.ai/workflow/voices
+  baseURL: https://api.rask.ai/v2
+  properties:
+  - url: https://docs.api.rask.ai/workflow/voices
+    type: Documentation
+  - url: openapi/rask-openapi.yml
+    type: OpenAPI
+  - url: collections/rask.postman_collection.json
+    type: PostmanCollection
+  - url: collections/rask.opencollection.json
+    type: OpenCollection
+  description: Retrieve and assign project voices and speakers, including voice cloning
+    that creates a digital copy of the original speaker's voice across supported
+    languages for multi-speaker localization.
+- aid: rask:transcription
+  name: Rask AI Transcription API
+  tags:
+  - Transcription
+  - Speech to Text
+  - SRT
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.rask.ai/api/transcription-api
+  baseURL: https://api.rask.ai/v2
+  properties:
+  - url: https://www.rask.ai/api/transcription-api
+    type: Documentation
+  - url: https://docs.api.rask.ai/api-reference/project/create_transcription
+    type: APIReference
+  - url: openapi/rask-openapi.yml
+    type: OpenAPI
+  - url: collections/rask.postman_collection.json
+    type: PostmanCollection
+  - url: collections/rask.opencollection.json
+    type: OpenCollection
+  description: Automatically transcribe uploaded video and audio into editable text
+    segments, or supply an SRT file for higher dubbing accuracy. Transcriptions feed
+    the translation and project generation steps.
+- aid: rask:job-status
+  name: Rask AI Job Status API
+  tags:
+  - Job Status
+  - Async
+  - Artifacts
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.api.rask.ai/api-reference/project/get_project
+  baseURL: https://api.rask.ai/v2
+  properties:
+  - url: https://docs.api.rask.ai/api-reference/project/get_project
+    type: Documentation
+  - url: https://docs.api.rask.ai/api-reference/project/get_project
+    type: APIReference
+  - url: openapi/rask-openapi.yml
+    type: OpenAPI
+  - url: collections/rask.postman_collection.json
+    type: PostmanCollection
+  - url: collections/rask.opencollection.json
+    type: OpenCollection
+  description: Poll an individual project to monitor its asynchronous processing status
+    and retrieve output artifact links (translated video, translated audio, voiceover)
+    once localization completes.
+common:
+- type: GitHubOrganization
+  url: https://github.com/braskai
+- type: LinkedIn
+  url: https://www.linkedin.com/company/rask-ai
+- type: Website
+  url: https://www.rask.ai
+- type: Documentation
+  url: https://docs.api.rask.ai
+- type: Plans
+  url: plans/rask-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/rask-rate-limits.yml
+- type: FinOps
+  url: finops/rask-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

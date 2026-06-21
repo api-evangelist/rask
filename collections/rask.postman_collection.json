@@ -1,0 +1,180 @@
+{
+  "info": {
+    "name": "Rask AI API",
+    "description": "Rask AI video and audio localization REST API: upload media, create transcriptions, create localization (dubbing) projects, and poll project status for translated video, audio, and voiceover artifacts. Auth uses an OAuth2-issued Bearer token.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.rask.ai"
+    },
+    {
+      "key": "bearerToken",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Media",
+      "description": {
+        "content": "Upload and retrieve source media (video and audio).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "name": "Upload a media file.",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/library/v1/media",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "library",
+                "v1",
+                "media"
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "description": "Upload a video or audio file (mp4, mov, webm, mkv, mp3, wav) to the media library. Returns a media identifier used when creating a transcription or project."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Transcription",
+      "description": {
+        "content": "Create transcriptions from uploaded media or SRT files.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "name": "Create a transcription.",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v2/transcriptions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v2",
+                "transcriptions"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"media_id\": \"<uuid>\",\n  \"src_lang\": \"en\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Transcribe uploaded media into editable text segments, or provide an SRT file for higher dubbing accuracy. Returns a transcription identifier used when creating a project."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Projects",
+      "description": {
+        "content": "Create, retrieve, and poll localization (dubbing) projects.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "name": "Create a project (dubbing job).",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v2/projects",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v2",
+                "projects"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"video_id\": \"<uuid>\",\n  \"dst_lang\": \"es\",\n  \"name\": \"<string>\",\n  \"src_lang\": \"en\",\n  \"num_speakers\": 1,\n  \"transcript_id\": \"<uuid>\",\n  \"glossary_id\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Create a localization project from an uploaded video, specifying the destination language and optional source language, speaker count, transcription, and glossary. Processing is asynchronous."
+          },
+          "response": []
+        },
+        {
+          "name": "Get a project (status and artifacts).",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v2/projects/:project_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v2",
+                "projects",
+                ":project_id"
+              ],
+              "variable": [
+                {
+                  "key": "project_id",
+                  "value": "",
+                  "description": "The UUID of the project to retrieve."
+                }
+              ]
+            },
+            "description": "Retrieve a single project to monitor its asynchronous processing status and obtain output artifact links (translated video, translated audio, voiceover) once localization completes."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

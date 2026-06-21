@@ -1,0 +1,69 @@
+aid: rask
+name: Rask AI
+review:
+  question: Does Rask AI expose a documented public WebSocket API?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was created. Rask AI's localization API is an
+    asynchronous REST workflow: clients create a project (dubbing/translation
+    job) and poll GET /v2/projects/{project_id} for status and output
+    artifacts. There is no documented streaming surface (no WebSocket and no
+    HTTP Server-Sent Events) to model, so no AsyncAPI artifact was authored.
+findings:
+  summary: |
+    Rask AI does not publish a documented public WebSocket API. The platform
+    exposes a REST (HTTPS) API under https://api.rask.ai for media upload,
+    transcription, project (dubbing/translation) creation, voices, and project
+    status retrieval. Long-running localization is handled with an asynchronous
+    job model: a project is created and then polled via
+    GET /v2/projects/{project_id} until processing completes and artifact
+    links (translated video, translated audio, voiceover) are available. No
+    realtime, bidirectional, or streaming WebSocket (ws:// or wss://) endpoint
+    and no Server-Sent Events stream are documented as of the review date.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.rask.ai
+      documented: true
+    - protocol: SSE
+      scheme: https
+      documented: false
+      note: No Server-Sent Events stream is documented; status is obtained by polling the get-project endpoint.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in Rask's API reference for media, transcription, projects, voices, or status.
+  endpointsConfirmedRest:
+    - POST https://api.rask.ai/api/library/v1/media
+    - POST https://api.rask.ai/v2/transcriptions
+    - POST https://api.rask.ai/v2/projects
+    - GET  https://api.rask.ai/v2/projects/{project_id}
+  authentication:
+    type: OAuth2 Bearer
+    note: An API Client ID and API Code are generated in the Rask app and exchanged for an OAuth2 token, sent as Authorization Bearer.
+  apiAvailability:
+    note: API access is available with paid plans; capabilities correspond to the features of the selected plan. Contact api@rask.ai for access.
+sources:
+  - url: https://docs.api.rask.ai
+    type: Documentation
+    note: API v2 docs describe REST endpoints; no WebSocket or SSE surface listed.
+  - url: https://docs.api.rask.ai/api-reference/project/create_project
+    type: APIReference
+    note: POST https://api.rask.ai/v2/projects with Bearer auth; asynchronous processing.
+  - url: https://docs.api.rask.ai/api-reference/project/get_project
+    type: APIReference
+    note: GET https://api.rask.ai/v2/projects/{project_id} to poll status and retrieve artifacts.
+  - url: https://help.rask.ai/hc/introducing-rask-api-rask-help-center
+    type: Documentation
+    note: Confirms OAuth2 authentication and the upload to transcription to project to status workflow.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket or SSE protocol surface exists. Rask AI uses an asynchronous
+    REST polling model, which is fully represented by the OpenAPI document and
+    apis.yml. No AsyncAPI artifact was created because there is no event-driven
+    or streaming transport to model.
