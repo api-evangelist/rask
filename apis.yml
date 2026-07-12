@@ -132,6 +132,12 @@ apis:
     and retrieve output artifact links (translated video, translated audio, voiceover)
     once localization completes.
 common:
+- type: TrustCenter
+  url: security/rask-trust-center.yml
+- type: DomainSecurity
+  url: security/rask-domain-security.yml
+- type: Authentication
+  url: authentication/rask-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/braskai
 - type: LinkedIn
@@ -146,6 +152,8 @@ common:
   url: rate-limits/rask-rate-limits.yml
 - type: FinOps
   url: finops/rask-finops.yml
+- type: Blog
+  url: https://www.rask.ai/blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

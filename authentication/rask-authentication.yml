@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/rask-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: 'OAuth2-issued Bearer token. Generate an API Client ID and API Code in the Rask
+    app, exchange them for an OAuth2 token, and send it as `Authorization: Bearer {token}`.'
+  sources:
+  - openapi/rask-openapi.yml

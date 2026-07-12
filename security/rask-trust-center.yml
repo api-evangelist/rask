@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: searched
+probe: true
+source: https://www.rask.ai/compliance/encryption-policy
+url: https://www.rask.ai/compliance/encryption-policy
+certifications:
+- SOC 2
+- GDPR
+evidence:
+- source: https://www.rask.ai/compliance/encryption-policy
+  keywords:
+  - soc 2
+  - trust center
+  - gdpr
