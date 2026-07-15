@@ -132,6 +132,8 @@ apis:
     and retrieve output artifact links (translated video, translated audio, voiceover)
     once localization completes.
 common:
+- type: AgenticAccess
+  url: agentic-access/rask-agentic-access.yml
 - type: TrustCenter
   url: security/rask-trust-center.yml
 - type: DomainSecurity
