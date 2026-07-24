@@ -1,0 +1,68 @@
+openapi: 3.0.1
+info:
+  title: Rask AI Media Transcription API
+  description: Rask AI is an AI video and audio localization platform. The REST API lets developers upload media, transcribe and translate it, create localization (dubbing) projects across 130+ languages, manage voices and speakers, and poll project status to retrieve translated video, translated audio, and voiceover artifacts. Projects are processed asynchronously. Authentication uses an OAuth2-issued Bearer token (an API Client ID and API Code are generated in the Rask app and exchanged for a token). Endpoints and schemas below reflect Rask's public API v2 documentation; consult https://docs.api.rask.ai for the authoritative reference.
+  termsOfService: https://www.rask.ai/terms-of-service
+  contact:
+    name: Rask AI API Support
+    email: api@rask.ai
+    url: https://docs.api.rask.ai
+  version: '2'
+servers:
+- url: https://api.rask.ai
+  description: Rask AI production API
+security:
+- bearerAuth: []
+tags:
+- name: Transcription
+  description: Create and retrieve transcriptions from uploaded media or SRT files.
+paths:
+  /v2/transcriptions:
+    post:
+      operationId: createTranscription
+      tags:
+      - Transcription
+      summary: Create a transcription
+      description: Transcribe uploaded media into editable text segments, or provide an SRT file for higher dubbing accuracy. Returns a transcription identifier used when creating a project.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTranscriptionRequest'
+      responses:
+        '200':
+          description: Transcription created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transcription'
+components:
+  schemas:
+    Transcription:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Transcription identifier.
+        status:
+          type: string
+          description: Transcription processing status.
+    CreateTranscriptionRequest:
+      type: object
+      required:
+      - media_id
+      properties:
+        media_id:
+          type: string
+          format: uuid
+          description: ID of the uploaded media to transcribe.
+        src_lang:
+          type: string
+          description: Source language code without dialect (e.g., en).
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'OAuth2-issued Bearer token. Generate an API Client ID and API Code in the Rask app, exchange them for an OAuth2 token, and send it as `Authorization: Bearer {token}`.'

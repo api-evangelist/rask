@@ -1,0 +1,61 @@
+openapi: 3.0.1
+info:
+  title: Rask AI Media API
+  description: Rask AI is an AI video and audio localization platform. The REST API lets developers upload media, transcribe and translate it, create localization (dubbing) projects across 130+ languages, manage voices and speakers, and poll project status to retrieve translated video, translated audio, and voiceover artifacts. Projects are processed asynchronously. Authentication uses an OAuth2-issued Bearer token (an API Client ID and API Code are generated in the Rask app and exchanged for a token). Endpoints and schemas below reflect Rask's public API v2 documentation; consult https://docs.api.rask.ai for the authoritative reference.
+  termsOfService: https://www.rask.ai/terms-of-service
+  contact:
+    name: Rask AI API Support
+    email: api@rask.ai
+    url: https://docs.api.rask.ai
+  version: '2'
+servers:
+- url: https://api.rask.ai
+  description: Rask AI production API
+security:
+- bearerAuth: []
+tags:
+- name: Media
+  description: Upload and retrieve source media (video and audio).
+paths:
+  /api/library/v1/media:
+    post:
+      operationId: uploadMediaFile
+      tags:
+      - Media
+      summary: Upload a media file
+      description: Upload a video or audio file (mp4, mov, webm, mkv, mp3, wav) to the media library. Returns a media identifier used when creating a transcription or project.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: The media file to upload.
+      responses:
+        '200':
+          description: Media uploaded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Media'
+components:
+  schemas:
+    Media:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Uploaded media identifier.
+        kind:
+          type: string
+          description: Media kind (e.g., video or audio).
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'OAuth2-issued Bearer token. Generate an API Client ID and API Code in the Rask app, exchange them for an OAuth2 token, and send it as `Authorization: Bearer {token}`.'
