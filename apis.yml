@@ -7,7 +7,20 @@ description: Rask AI is an AI video and audio localization platform offering aut
   Its REST API lets developers upload media, transcribe and translate it, create
   localization projects, and retrieve dubbed video, audio, and voiceover artifacts
   programmatically using an OAuth2 Bearer token.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: true
+  try_now: true
+  public: false
+  label: Freemium (free trial) · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/rask.png
 tags:
 - AI
 - Video Localization
@@ -18,119 +31,102 @@ created: '2026-06-21'
 modified: '2026-06-21'
 specificationVersion: '0.19'
 apis:
-- aid: rask:projects-dubbing-jobs
-  name: Rask AI Projects & Dubbing Jobs API
+- aid: rask:rask-media-api
+  name: Rask AI Media API
+  description: Upload and retrieve source media (video and audio).
+  humanURL: https://docs.api.rask.ai/workflow/translation
+  baseURL: https://api.rask.ai/v2
+  tags:
+  - Media
+  properties:
+  - type: OpenAPI
+    url: openapi/rask-media-api-openapi.yml
+  - type: Documentation
+    url: https://docs.api.rask.ai
+  - type: APIReference
+    url: https://docs.api.rask.ai/api-reference/project/create_project
+  - type: PostmanCollection
+    url: collections/rask.postman_collection.json
+  - type: OpenCollection
+    url: collections/rask.opencollection.json
+  - type: Documentation
+    url: https://docs.api.rask.ai/workflow/translation
+  - type: APIReference
+    url: https://docs.api.rask.ai/languages/destination
+  - type: Documentation
+    url: https://docs.api.rask.ai/workflow/voices
+  - type: Documentation
+    url: https://www.rask.ai/api/transcription-api
+  - type: APIReference
+    url: https://docs.api.rask.ai/api-reference/project/create_transcription
+  - type: Documentation
+    url: https://docs.api.rask.ai/api-reference/project/get_project
+  - type: APIReference
+    url: https://docs.api.rask.ai/api-reference/project/get_project
+- aid: rask:rask-projects-api
+  name: Rask AI Projects API
+  description: Create, retrieve, update, and delete localization (dubbing) projects.
+  humanURL: https://docs.api.rask.ai/workflow/translation
+  baseURL: https://api.rask.ai/v2
   tags:
   - Projects
-  - Dubbing
-  - Localization
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.api.rask.ai/workflow/translation
-  baseURL: https://api.rask.ai/v2
   properties:
-  - url: https://docs.api.rask.ai
-    type: Documentation
-  - url: https://docs.api.rask.ai/api-reference/project/create_project
-    type: APIReference
-  - url: openapi/rask-openapi.yml
-    type: OpenAPI
-  - url: collections/rask.postman_collection.json
-    type: PostmanCollection
-  - url: collections/rask.opencollection.json
-    type: OpenCollection
-  description: Create and manage localization projects (dubbing jobs) from an uploaded
-    video, specifying source and destination languages, speaker count, transcription,
-    and glossary. Projects are processed asynchronously and return translated video,
-    translated audio, and voiceover artifacts.
-- aid: rask:translation
-  name: Rask AI Translation API
-  tags:
-  - Translation
-  - Languages
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.api.rask.ai/workflow/translation
-  baseURL: https://api.rask.ai/v2
-  properties:
-  - url: https://docs.api.rask.ai/workflow/translation
-    type: Documentation
-  - url: https://docs.api.rask.ai/languages/destination
-    type: APIReference
-  - url: openapi/rask-openapi.yml
-    type: OpenAPI
-  - url: collections/rask.postman_collection.json
-    type: PostmanCollection
-  - url: collections/rask.opencollection.json
-    type: OpenCollection
-  description: Translate transcribed media into 130+ destination languages as part
-    of the project generation workflow, with optional glossary support for consistent
-    terminology and multi-speaker handling.
-- aid: rask:voices
-  name: Rask AI Voices API
-  tags:
-  - Voices
-  - Voice Cloning
-  - Speakers
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.api.rask.ai/workflow/voices
-  baseURL: https://api.rask.ai/v2
-  properties:
-  - url: https://docs.api.rask.ai/workflow/voices
-    type: Documentation
-  - url: openapi/rask-openapi.yml
-    type: OpenAPI
-  - url: collections/rask.postman_collection.json
-    type: PostmanCollection
-  - url: collections/rask.opencollection.json
-    type: OpenCollection
-  description: Retrieve and assign project voices and speakers, including voice cloning
-    that creates a digital copy of the original speaker's voice across supported
-    languages for multi-speaker localization.
-- aid: rask:transcription
+  - type: OpenAPI
+    url: openapi/rask-projects-api-openapi.yml
+  - type: Documentation
+    url: https://docs.api.rask.ai
+  - type: APIReference
+    url: https://docs.api.rask.ai/api-reference/project/create_project
+  - type: PostmanCollection
+    url: collections/rask.postman_collection.json
+  - type: OpenCollection
+    url: collections/rask.opencollection.json
+  - type: Documentation
+    url: https://docs.api.rask.ai/workflow/translation
+  - type: APIReference
+    url: https://docs.api.rask.ai/languages/destination
+  - type: Documentation
+    url: https://docs.api.rask.ai/workflow/voices
+  - type: Documentation
+    url: https://www.rask.ai/api/transcription-api
+  - type: APIReference
+    url: https://docs.api.rask.ai/api-reference/project/create_transcription
+  - type: Documentation
+    url: https://docs.api.rask.ai/api-reference/project/get_project
+  - type: APIReference
+    url: https://docs.api.rask.ai/api-reference/project/get_project
+- aid: rask:rask-transcription-api
   name: Rask AI Transcription API
+  description: Create and retrieve transcriptions from uploaded media or SRT files.
+  humanURL: https://docs.api.rask.ai/workflow/translation
+  baseURL: https://api.rask.ai/v2
   tags:
   - Transcription
-  - Speech to Text
-  - SRT
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.rask.ai/api/transcription-api
-  baseURL: https://api.rask.ai/v2
   properties:
-  - url: https://www.rask.ai/api/transcription-api
-    type: Documentation
-  - url: https://docs.api.rask.ai/api-reference/project/create_transcription
-    type: APIReference
-  - url: openapi/rask-openapi.yml
-    type: OpenAPI
-  - url: collections/rask.postman_collection.json
-    type: PostmanCollection
-  - url: collections/rask.opencollection.json
-    type: OpenCollection
-  description: Automatically transcribe uploaded video and audio into editable text
-    segments, or supply an SRT file for higher dubbing accuracy. Transcriptions feed
-    the translation and project generation steps.
-- aid: rask:job-status
-  name: Rask AI Job Status API
-  tags:
-  - Job Status
-  - Async
-  - Artifacts
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.api.rask.ai/api-reference/project/get_project
-  baseURL: https://api.rask.ai/v2
-  properties:
-  - url: https://docs.api.rask.ai/api-reference/project/get_project
-    type: Documentation
-  - url: https://docs.api.rask.ai/api-reference/project/get_project
-    type: APIReference
-  - url: openapi/rask-openapi.yml
-    type: OpenAPI
-  - url: collections/rask.postman_collection.json
-    type: PostmanCollection
-  - url: collections/rask.opencollection.json
-    type: OpenCollection
-  description: Poll an individual project to monitor its asynchronous processing status
-    and retrieve output artifact links (translated video, translated audio, voiceover)
-    once localization completes.
+  - type: OpenAPI
+    url: openapi/rask-transcription-api-openapi.yml
+  - type: Documentation
+    url: https://docs.api.rask.ai
+  - type: APIReference
+    url: https://docs.api.rask.ai/api-reference/project/create_project
+  - type: PostmanCollection
+    url: collections/rask.postman_collection.json
+  - type: OpenCollection
+    url: collections/rask.opencollection.json
+  - type: Documentation
+    url: https://docs.api.rask.ai/workflow/translation
+  - type: APIReference
+    url: https://docs.api.rask.ai/languages/destination
+  - type: Documentation
+    url: https://docs.api.rask.ai/workflow/voices
+  - type: Documentation
+    url: https://www.rask.ai/api/transcription-api
+  - type: APIReference
+    url: https://docs.api.rask.ai/api-reference/project/create_transcription
+  - type: Documentation
+    url: https://docs.api.rask.ai/api-reference/project/get_project
+  - type: APIReference
+    url: https://docs.api.rask.ai/api-reference/project/get_project
 common:
 - type: AgenticAccess
   url: agentic-access/rask-agentic-access.yml
