@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rask AI Media Projects API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a project (dubbing job)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.rask.ai/v2/projects",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a localization project from an uploaded video, specifying the destination language and optional source language, speaker count, transcription, and glossary. Processing is asynchronous; poll the project to retrieve output artifacts."
+        },
+        {
+          "info": {
+            "name": "Get a project (status and artifacts)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.rask.ai/v2/projects/:project_id",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the project to retrieve."
+              }
+            ]
+          },
+          "docs": "Retrieve a single project to monitor its asynchronous processing status and obtain output artifact links once localization completes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

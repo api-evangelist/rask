@@ -1,0 +1,142 @@
+{
+  "item": [
+    {
+      "id": "77a9d46b-d4d1-4858-aa2e-7ff53f365933",
+      "name": "Transcription",
+      "description": {
+        "content": "Create and retrieve transcriptions from uploaded media or SRT files.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5bfcfa8c-23e4-44dd-9429-368317ec808c",
+          "name": "Create a transcription",
+          "request": {
+            "name": "Create a transcription",
+            "description": {
+              "content": "Transcribe uploaded media into editable text segments, or provide an SRT file for higher dubbing accuracy. Returns a transcription identifier used when creating a project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "transcriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"media_id\": \"<uuid>\",\n  \"src_lang\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4459c909-32f0-48ee-abd5-a91d8eaed188",
+              "name": "Transcription created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "transcriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"media_id\": \"<uuid>\",\n  \"src_lang\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"c511d1a2-4eca-99b3-bcf5-ae94c8bce033\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.rask.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "aa6daad2-805c-4b3b-9d7f-62d7d155f4a7",
+    "name": "Rask AI Media Transcription API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Rask AI is an AI video and audio localization platform. The REST API lets developers upload media, transcribe and translate it, create localization (dubbing) projects across 130+ languages, manage voices and speakers, and poll project status to retrieve translated video, translated audio, and voiceover artifacts. Projects are processed asynchronously. Authentication uses an OAuth2-issued Bearer token (an API Client ID and API Code are generated in the Rask app and exchanged for a token). Endpoints and schemas below reflect Rask's public API v2 documentation; consult https://docs.api.rask.ai for the authoritative reference.\n\nContact Support:\n Name: Rask AI API Support\n Email: api@rask.ai",
+      "type": "text/plain"
+    }
+  }
+}

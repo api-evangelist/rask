@@ -1,0 +1,240 @@
+{
+  "item": [
+    {
+      "id": "3d1594e5-2a8e-4708-81de-d2f36761fa7d",
+      "name": "Projects",
+      "description": {
+        "content": "Create, retrieve, update, and delete localization (dubbing) projects.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "476cd95a-a5c5-448a-b3c0-692f9f1c0d1b",
+          "name": "Create a project (dubbing job)",
+          "request": {
+            "name": "Create a project (dubbing job)",
+            "description": {
+              "content": "Create a localization project from an uploaded video, specifying the destination language and optional source language, speaker count, transcription, and glossary. Processing is asynchronous; poll the project to retrieve output artifacts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "projects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"video_id\": \"<uuid>\",\n  \"dst_lang\": \"<string>\",\n  \"name\": \"<string>\",\n  \"src_lang\": \"<string>\",\n  \"num_speakers\": \"<integer>\",\n  \"transcript_id\": \"<uuid>\",\n  \"glossary_id\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "91b553d6-bbdf-479a-bb02-01ec8e52d163",
+              "name": "Project created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"video_id\": \"<uuid>\",\n  \"dst_lang\": \"<string>\",\n  \"name\": \"<string>\",\n  \"src_lang\": \"<string>\",\n  \"num_speakers\": \"<integer>\",\n  \"transcript_id\": \"<uuid>\",\n  \"glossary_id\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"7a7bdbfa-d48f-7396-776c-b392971981d4\",\n  \"name\": \"string\",\n  \"source_type\": \"youtube\",\n  \"status\": \"string\",\n  \"dst_lang\": \"string\",\n  \"created_at\": \"1992-02-13T07:20:23.379Z\",\n  \"translated_video\": \"string\",\n  \"translated_audio\": \"string\",\n  \"voiceover\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb353595-8339-409d-a69f-2b750ddb46e0",
+          "name": "Get a project (status and artifacts)",
+          "request": {
+            "name": "Get a project (status and artifacts)",
+            "description": {
+              "content": "Retrieve a single project to monitor its asynchronous processing status and obtain output artifact links once localization completes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "projects",
+                ":project_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "project_id",
+                  "description": "(Required) The UUID of the project to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d5123c2e-1c53-4543-9b18-b3e3949a49c1",
+              "name": "Project details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "projects",
+                    ":project_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "project_id",
+                      "description": "(Required) The UUID of the project to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"7a7bdbfa-d48f-7396-776c-b392971981d4\",\n  \"name\": \"string\",\n  \"source_type\": \"youtube\",\n  \"status\": \"string\",\n  \"dst_lang\": \"string\",\n  \"created_at\": \"1992-02-13T07:20:23.379Z\",\n  \"translated_video\": \"string\",\n  \"translated_audio\": \"string\",\n  \"voiceover\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.rask.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b8b39990-56c4-4145-a5ec-a0e37a7155b6",
+    "name": "Rask AI Media Projects API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Rask AI is an AI video and audio localization platform. The REST API lets developers upload media, transcribe and translate it, create localization (dubbing) projects across 130+ languages, manage voices and speakers, and poll project status to retrieve translated video, translated audio, and voiceover artifacts. Projects are processed asynchronously. Authentication uses an OAuth2-issued Bearer token (an API Client ID and API Code are generated in the Rask app and exchanged for a token). Endpoints and schemas below reflect Rask's public API v2 documentation; consult https://docs.api.rask.ai for the authoritative reference.\n\nContact Support:\n Name: Rask AI API Support\n Email: api@rask.ai",
+      "type": "text/plain"
+    }
+  }
+}

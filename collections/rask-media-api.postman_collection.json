@@ -1,0 +1,152 @@
+{
+  "item": [
+    {
+      "id": "04dadbfc-baa0-461b-b0dd-a84976200aee",
+      "name": "Media",
+      "description": {
+        "content": "Upload and retrieve source media (video and audio).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "40897c1c-d715-4693-9a0e-d248bb99ad0b",
+          "name": "Upload a media file",
+          "request": {
+            "name": "Upload a media file",
+            "description": {
+              "content": "Upload a video or audio file (mp4, mov, webm, mkv, mp3, wav) to the media library. Returns a media identifier used when creating a transcription or project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "library",
+                "v1",
+                "media"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "The media file to upload."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c923532c-4801-43fb-970b-7c5d5aa299fa",
+              "name": "Media uploaded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "library",
+                    "v1",
+                    "media"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "The media file to upload.",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"900c6359-3201-ba96-902b-5670fc624f92\",\n  \"kind\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.rask.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2fe64770-fcb2-4084-b341-c36de6b05f58",
+    "name": "Rask AI Media API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Rask AI is an AI video and audio localization platform. The REST API lets developers upload media, transcribe and translate it, create localization (dubbing) projects across 130+ languages, manage voices and speakers, and poll project status to retrieve translated video, translated audio, and voiceover artifacts. Projects are processed asynchronously. Authentication uses an OAuth2-issued Bearer token (an API Client ID and API Code are generated in the Rask app and exchanged for a token). Endpoints and schemas below reflect Rask's public API v2 documentation; consult https://docs.api.rask.ai for the authoritative reference.\n\nContact Support:\n Name: Rask AI API Support\n Email: api@rask.ai",
+      "type": "text/plain"
+    }
+  }
+}

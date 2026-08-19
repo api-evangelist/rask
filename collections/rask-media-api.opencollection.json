@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rask AI Media API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Media",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload a media file",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.rask.ai/api/library/v1/media",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Upload a video or audio file (mp4, mov, webm, mkv, mp3, wav) to the media library. Returns a media identifier used when creating a transcription or project."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
