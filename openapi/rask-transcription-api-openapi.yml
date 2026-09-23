@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Rask AI Media Transcription API
-  description: Rask AI is an AI video and audio localization platform. The REST API lets developers upload media, transcribe and translate it, create localization (dubbing) projects across 130+ languages, manage voices and speakers, and poll project status to retrieve translated video, translated audio, and voiceover artifacts. Projects are processed asynchronously. Authentication uses an OAuth2-issued Bearer token (an API Client ID and API Code are generated in the Rask app and exchanged for a token). Endpoints and schemas below reflect Rask's public API v2 documentation; consult https://docs.api.rask.ai for the authoritative reference.
+  title: Rask AI Transcription API
+  description: Rask AI is an AI video and audio localization platform.
   termsOfService: https://www.rask.ai/terms-of-service
   contact:
     name: Rask AI API Support
@@ -39,16 +39,6 @@ paths:
                 $ref: '#/components/schemas/Transcription'
 components:
   schemas:
-    Transcription:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Transcription identifier.
-        status:
-          type: string
-          description: Transcription processing status.
     CreateTranscriptionRequest:
       type: object
       required:
@@ -61,6 +51,16 @@ components:
         src_lang:
           type: string
           description: Source language code without dialect (e.g., en).
+    Transcription:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Transcription identifier.
+        status:
+          type: string
+          description: Transcription processing status.
   securitySchemes:
     bearerAuth:
       type: http
