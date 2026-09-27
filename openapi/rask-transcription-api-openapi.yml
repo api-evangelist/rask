@@ -39,6 +39,16 @@ paths:
                 $ref: '#/components/schemas/Transcription'
 components:
   schemas:
+    Transcription:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Transcription identifier.
+        status:
+          type: string
+          description: Transcription processing status.
     CreateTranscriptionRequest:
       type: object
       required:
@@ -51,16 +61,6 @@ components:
         src_lang:
           type: string
           description: Source language code without dialect (e.g., en).
-    Transcription:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Transcription identifier.
-        status:
-          type: string
-          description: Transcription processing status.
   securitySchemes:
     bearerAuth:
       type: http
