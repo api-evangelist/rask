@@ -149,6 +149,8 @@ apis:
   - type: APIReference
     url: https://docs.api.rask.ai/api-reference/project/get_project
 common:
+- type: Pricing
+  url: https://www.rask.ai/pricing
 - type: AgenticAccess
   url: agentic-access/rask-agentic-access.yml
 - type: TrustCenter
