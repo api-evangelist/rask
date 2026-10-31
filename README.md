@@ -1,4 +1,4 @@
-# Rask AI (rask)
+# Rask AI
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,137 +66,122 @@
 
 Rask AI is an AI video and audio localization platform offering automated dubbing, translation, transcription, voice cloning, and lip-sync across 130+ languages. Its REST API lets developers upload media, transcribe and translate it, create localization projects, and retrieve dubbed video, audio, and voiceover artifacts programmatically using an OAuth2 Bearer token.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/rask/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/rask/refs/heads/main/apis.yml)
+**Areas:** Artificial Intelligence · Video Localization · Dubbing · Translation · Transcription
 
-## Tags
+## Rask AI on APIs.io
 
-- AI
-- Video Localization
-- Dubbing
-- Translation
-- Transcription
+Everything profiled for Rask AI is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/rask/](https://apis.io/providers/rask/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (3)
 
-- **Created:** 2026-06-21
-- **Modified:** 2026-06-21
+- [Rask AI Media API](https://apis.io/apis/rask/rask-media-api/) — Upload and retrieve source media (video and audio).
+- [Rask AI Projects API](https://apis.io/apis/rask/rask-projects-api/) — Create, retrieve, update, and delete localization (dubbing) projects.
+- [Rask AI Transcription API](https://apis.io/apis/rask/rask-transcription-api/) — Create and retrieve transcriptions from uploaded media or SRT files.
 
-## APIs
+### Published properties
 
-### Rask AI Projects & Dubbing Jobs API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Create and manage localization projects (dubbing jobs) from an uploaded video, specifying source and destination languages, speaker count, transcription, and glossary. Projects are processed asynchronously and return translated video, translated audio, and voiceover artifacts.
+#### Agentic access (1)
 
-- **Human URL:** [https://docs.api.rask.ai/workflow/translation](https://docs.api.rask.ai/workflow/translation)
-- **Base URL:** `https://api.rask.ai/v2`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Rask Agentic Access](https://apis.io/agentic-access/rask/rask-agentic-access/)
 
-- Projects
-- Dubbing
-- Localization
+#### Collections (4)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://docs.api.rask.ai)
-- [API Reference](https://docs.api.rask.ai/api-reference/project/create_project)
-- [OpenAPI](openapi/rask-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/rask.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/rask.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Rask AI API](https://apis.io/collections/rask/open-rask/)
+- [Rask AI Media API](https://apis.io/collections/rask/open-rask-media-api/)
+- [Rask AI Media Projects API](https://apis.io/collections/rask/open-rask-projects-api/)
+- [Rask AI Media Transcription API](https://apis.io/collections/rask/open-rask-transcription-api/)
 
-### Rask AI Translation API
+#### Security (3)
 
-Translate transcribed media into 130+ destination languages as part of the project generation workflow, with optional glossary support for consistent terminology and multi-speaker handling.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://docs.api.rask.ai/workflow/translation](https://docs.api.rask.ai/workflow/translation)
-- **Base URL:** `https://api.rask.ai/v2`
+- [Rask Authentication](https://apis.io/security/rask/rask-authentication/)
+- [Rask Domain Security](https://apis.io/security/rask/rask-domain-security/)
+- [Rask Trust Center](https://apis.io/security/rask/rask-trust-center/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Translation
-- Languages
+Published plans, tiers and prices.
 
-#### Properties
+- [Rask Plans Pricing](https://apis.io/plans/rask/rask-plans-pricing/)
 
-- [Documentation](https://docs.api.rask.ai/workflow/translation)
-- [API Reference](https://docs.api.rask.ai/languages/destination)
-- [OpenAPI](openapi/rask-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/rask.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/rask.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Rask AI Voices API
+Published request limits.
 
-Retrieve and assign project voices and speakers, including voice cloning that creates a digital copy of the original speaker's voice across supported languages for multi-speaker localization.
+- [Rask Rate Limits](https://apis.io/rate-limits/rask/rask-rate-limits/)
 
-- **Human URL:** [https://docs.api.rask.ai/workflow/voices](https://docs.api.rask.ai/workflow/voices)
-- **Base URL:** `https://api.rask.ai/v2`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Voices
-- Voice Cloning
-- Speakers
+- [Rask Finops](https://apis.io/finops/rask/rask-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://docs.api.rask.ai/workflow/voices)
-- [OpenAPI](openapi/rask-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/rask.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/rask.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Rask AI Transcription API
-
-Automatically transcribe uploaded video and audio into editable text segments, or supply an SRT file for higher dubbing accuracy. Transcriptions feed the translation and project generation steps.
-
-- **Human URL:** [https://www.rask.ai/api/transcription-api](https://www.rask.ai/api/transcription-api)
-- **Base URL:** `https://api.rask.ai/v2`
-
-#### Tags
-
-- Transcription
-- Speech to Text
-- SRT
-
-#### Properties
-
-- [Documentation](https://www.rask.ai/api/transcription-api)
-- [API Reference](https://docs.api.rask.ai/api-reference/project/create_transcription)
-- [OpenAPI](openapi/rask-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/rask.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/rask.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Rask AI Job Status API
-
-Poll an individual project to monitor its asynchronous processing status and retrieve output artifact links (translated video, translated audio, voiceover) once localization completes.
-
-- **Human URL:** [https://docs.api.rask.ai/api-reference/project/get_project](https://docs.api.rask.ai/api-reference/project/get_project)
-- **Base URL:** `https://api.rask.ai/v2`
-
-#### Tags
-
-- Job Status
-- Async
-- Artifacts
-
-#### Properties
-
-- [Documentation](https://docs.api.rask.ai/api-reference/project/get_project)
-- [API Reference](https://docs.api.rask.ai/api-reference/project/get_project)
-- [OpenAPI](openapi/rask-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/rask.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/rask.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/braskai)
-- [LinkedIn](https://www.linkedin.com/company/rask-ai)
 - [Website](https://www.rask.ai)
 - [Documentation](https://docs.api.rask.ai)
-- [Plans](plans/rask-plans-pricing.yml)
-- [Rate Limits](rate-limits/rask-rate-limits.yml)
-- [Fin Ops](finops/rask-finops.yml)
+- [Pricing](https://www.rask.ai/pricing)
+- [Blog](https://www.rask.ai/blog)
+- [GitHub](https://github.com/braskai)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 35.7** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 47.8 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 50.0 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 15.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/rask/](https://apis.io/providers/rask/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Rask AI: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/rask/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
